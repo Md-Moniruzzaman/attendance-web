@@ -4,6 +4,8 @@ import 'package:attendance_app/dummy.dart';
 // import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
+import '../../edit_row.dart';
+
 class AttendenceTableData extends StatefulWidget {
   @override
   State<AttendenceTableData> createState() => _AttendenceTableDataState();
@@ -140,12 +142,22 @@ class TableRow extends DataTableSource {
       DataCell(Text('${demoRecentFiles[index].region}')),
       DataCell(Text('${demoRecentFiles[index].zone}')),
       DataCell(Text('${demoRecentFiles[index].latLong}')),
-      DataCell(Row(
-        children: [
-          IconButton(onPressed: (){print("update");}, icon: Icon(Icons.edit, color: primaryColor,)),
-          IconButton(onPressed: (){print("Delete");}, icon: Icon(Icons.delete , color: Colors.red,)),
-        ],
-      )),
+      DataCell(
+        Row(
+          children: [
+            EditView(),
+            IconButton(
+              onPressed: () {
+                print("Delete");
+              },
+              icon: Icon(
+                Icons.delete,
+                color: Colors.red,
+              ),
+            ),
+          ],
+        ),
+      ),
     ]);
   }
 

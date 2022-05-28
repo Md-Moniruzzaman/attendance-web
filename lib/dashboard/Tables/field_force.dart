@@ -8,7 +8,7 @@ class FieldForceData extends StatefulWidget {
 }
 
 class _FieldForceDataState extends State<FieldForceData> {
-   var tableRow = new TableRow();
+  var tableRow = new TableRow();
 
   @override
   Widget build(BuildContext context) {

@@ -1,5 +1,7 @@
+import 'package:attendance_app/add_row.dart';
 import 'package:attendance_app/constants.dart';
 import 'package:attendance_app/dummy.dart';
+import 'package:attendance_app/edit_row.dart';
 import 'package:flutter/material.dart';
 
 class PoiTableData extends StatefulWidget {
@@ -12,10 +14,10 @@ class PoiTableData extends StatefulWidget {
 }
 
 class _PoiTableDataState extends State<PoiTableData> {
-   var tableRow = new TableRow();
+  var tableRow = new TableRow();
   @override
   Widget build(BuildContext context) {
-     return Container(
+    return Container(
       width: double.infinity,
       child: SingleChildScrollView(
         child: Theme(
@@ -143,8 +145,16 @@ class TableRow extends DataTableSource {
       DataCell(Text('${demoRecentFiles[index].latLong}')),
       DataCell(Row(
         children: [
-          IconButton(onPressed: (){print("update");}, icon: Icon(Icons.edit, color: primaryColor,)),
-          IconButton(onPressed: (){print("Delete");}, icon: Icon(Icons.delete , color: Colors.red,)),
+          EditView(),
+          IconButton(
+            onPressed: () {
+              print("Delete");
+            },
+            icon: Icon(
+              Icons.delete,
+              color: Colors.red,
+            ),
+          ),
         ],
       )),
     ]);

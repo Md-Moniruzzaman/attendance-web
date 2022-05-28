@@ -1,3 +1,4 @@
+import 'package:attendance_app/constants.dart';
 import 'package:attendance_app/dashboard/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -20,13 +21,9 @@ class FormScreenState extends State<FormScreen> {
     return TextFormField(
       decoration: InputDecoration(
         labelText: 'Company Id',
-        labelStyle: TextStyle(
-          color: Colors.teal,
-        ),
         prefixIcon: Icon(
           FontAwesomeIcons.idCard,
           size: 18.0,
-          color: Colors.teal,
         ),
       ),
       validator: (String? value) {
@@ -49,10 +46,6 @@ class FormScreenState extends State<FormScreen> {
         prefixIcon: Icon(
           FontAwesomeIcons.user,
           size: 18.0,
-          color: Colors.teal,
-        ),
-        labelStyle: TextStyle(
-          color: Colors.teal,
         ),
       ),
       validator: (String? value) {
@@ -73,13 +66,9 @@ class FormScreenState extends State<FormScreen> {
       obscureText: true,
       decoration: InputDecoration(
         labelText: 'Password',
-        labelStyle: TextStyle(
-          color: Colors.teal,
-        ),
         prefixIcon: Icon(
           FontAwesomeIcons.key,
           size: 18.0,
-          color: Colors.teal,
         ),
       ),
       keyboardType: TextInputType.visiblePassword,
@@ -105,18 +94,23 @@ class FormScreenState extends State<FormScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            _buildName(),
-            _buildEmail(),
-            _buildPassword(),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: _buildName(),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: _buildEmail(),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: _buildPassword(),
+            ),
             SizedBox(height: 60),
             RaisedButton(
-              color: Colors.teal,
+              color: primaryColor,
               child: Text(
                 'Login',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 16,
-                ),
               ),
               onPressed: () {
                 if (!_formKey.currentState!.validate()) {

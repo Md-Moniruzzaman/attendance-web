@@ -21,87 +21,129 @@ class _MyAppState extends State<PopupView> {
                   backgroundColor: bgColor,
                   content: Container(
                     width: MediaQuery.of(context).size.width * 0.45,
-                    child: Stack(
-                      overflow: Overflow.visible,
-                      children: <Widget>[
-                        Positioned(
-                          right: -40.0,
-                          top: -40.0,
-                          child: InkResponse(
-                            onTap: () {
-                              Navigator.of(context).pop();
-                            },
-                            child: CircleAvatar(
-                              child: Icon(Icons.close),
-                              backgroundColor: Colors.red,
-                            ),
-                          ),
-                        ),
-                        Form(
-                          key: _formKey,
-                          child: SingleChildScrollView(
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: <Widget>[
-                                TextFormPopup(
-                                  labelText: 'PoiId',
-                                ),
-                                TextFormPopup(
-                                  labelText: 'Name',
-                                ),
-                                TextFormPopup(
-                                  labelText: 'PoiType',
-                                ),
-                                TextFormPopup(
-                                  labelText: 'Union',
-                                ),
-                                TextFormPopup(
-                                  labelText: 'Thana',
-                                ),
-                                TextFormPopup(
-                                  labelText: 'District',
-                                ),
-                                TextFormPopup(
-                                  labelText: 'Division',
-                                ),
-                                TextFormPopup(
-                                  labelText: 'Market',
-                                ),
-                                TextFormPopup(
-                                  labelText: 'Territory',
-                                ),
-                                TextFormPopup(
-                                  labelText: 'Area',
-                                ),
-                                TextFormPopup(
-                                  labelText: 'Region',
-                                ),
-                                TextFormPopup(
-                                  labelText: 'zone',
-                                ),
-                                TextFormPopup(
-                                  labelText: 'latLong',
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(16.0),
-                                  child: RaisedButton(
-                                    color: primaryColor,
-                                    child: Text(
-                                      "Submit",
-                                      style: TextStyle(color: Colors.white),
-                                    ),
-                                    onPressed: () {
-                                      if (_formKey.currentState!.validate()) {
-                                        _formKey.currentState!.save();
-                                      }
-                                    },
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: <Widget>[
+                          Form(
+                            key: _formKey,
+                            child: SingleChildScrollView(
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: <Widget>[
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: TextFormPopup(
+                                          labelText: 'PoiId',
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: TextFormPopup(
+                                          labelText: 'PoiType',
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                )
-                              ],
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: TextFormPopup(
+                                          labelText: 'Name',
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: TextFormPopup(
+                                          labelText: 'Union',
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: TextFormPopup(
+                                          labelText: 'Thana',
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: TextFormPopup(
+                                          labelText: 'District',
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: TextFormPopup(
+                                          labelText: 'Division',
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: TextFormPopup(
+                                          labelText: 'Market',
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: TextFormPopup(
+                                          labelText: 'Territory',
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: TextFormPopup(
+                                          labelText: 'Area',
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: TextFormPopup(
+                                          labelText: 'Region',
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: TextFormPopup(
+                                          labelText: 'zone',
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: TextFormPopup(
+                                          labelText: 'latLong',
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(16.0),
+                                    child: RaisedButton(
+                                      color: primaryColor,
+                                      child: Text(
+                                        "Submit",
+                                        style: TextStyle(color: Colors.white),
+                                      ),
+                                      onPressed: () {
+                                        if (_formKey.currentState!.validate()) {
+                                          _formKey.currentState!.save();
+                                        }
+                                      },
+                                    ),
+                                  )
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 );
@@ -123,11 +165,17 @@ class TextFormPopup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      decoration: InputDecoration(
-        labelText: labelText,
-        labelStyle: TextStyle(
-          color: Colors.white54,
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: TextFormField(
+        decoration: InputDecoration(
+          labelText: labelText,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(12.0),
+          ),
+          labelStyle: TextStyle(
+            color: Colors.white,
+          ),
         ),
       ),
     );
