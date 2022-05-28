@@ -4,8 +4,6 @@ import 'package:attendance_app/dummy.dart';
 // import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-import '../../edit_row.dart';
-
 class AttendenceTableData extends StatefulWidget {
   @override
   State<AttendenceTableData> createState() => _AttendenceTableDataState();
@@ -52,7 +50,37 @@ class _AttendenceTableDataState extends State<AttendenceTableData> {
       )),
       DataColumn(
           label: Text(
-        "POI ID",
+        "Employee ID",
+        style: Theme.of(context).textTheme.subtitle2,
+      )),
+      DataColumn(
+          label: Text(
+        "POI Id",
+        style: Theme.of(context).textTheme.subtitle2,
+      )),
+      DataColumn(
+          label: Text(
+        "Detail",
+        style: Theme.of(context).textTheme.subtitle2,
+      )),
+      DataColumn(
+          label: Text(
+        "POI Lat,Long",
+        style: Theme.of(context).textTheme.subtitle2,
+      )),
+      DataColumn(
+          label: Text(
+        "FIrst Date",
+        style: Theme.of(context).textTheme.subtitle2,
+      )),
+      DataColumn(
+          label: Text(
+        "Submit Date",
+        style: Theme.of(context).textTheme.subtitle2,
+      )),
+      DataColumn(
+          label: Text(
+        "Submit Time",
         style: Theme.of(context).textTheme.subtitle2,
       )),
       DataColumn(
@@ -62,57 +90,22 @@ class _AttendenceTableDataState extends State<AttendenceTableData> {
       )),
       DataColumn(
           label: Text(
-        "POI Type",
+        "Email",
         style: Theme.of(context).textTheme.subtitle2,
       )),
       DataColumn(
           label: Text(
-        "Union",
+        "Mobile",
         style: Theme.of(context).textTheme.subtitle2,
       )),
       DataColumn(
           label: Text(
-        "Thana",
+        "Distance",
         style: Theme.of(context).textTheme.subtitle2,
       )),
       DataColumn(
           label: Text(
-        "District",
-        style: Theme.of(context).textTheme.subtitle2,
-      )),
-      DataColumn(
-          label: Text(
-        "Division",
-        style: Theme.of(context).textTheme.subtitle2,
-      )),
-      DataColumn(
-          label: Text(
-        "Market",
-        style: Theme.of(context).textTheme.subtitle2,
-      )),
-      DataColumn(
-          label: Text(
-        "Territory",
-        style: Theme.of(context).textTheme.subtitle2,
-      )),
-      DataColumn(
-          label: Text(
-        "Area",
-        style: Theme.of(context).textTheme.subtitle2,
-      )),
-      DataColumn(
-          label: Text(
-        "Region",
-        style: Theme.of(context).textTheme.subtitle2,
-      )),
-      DataColumn(
-          label: Text(
-        "Zone",
-        style: Theme.of(context).textTheme.subtitle2,
-      )),
-      DataColumn(
-          label: Text(
-        "Lat & Long",
+        "Face Recognition",
         style: Theme.of(context).textTheme.subtitle2,
       )),
       DataColumn(
@@ -128,36 +121,41 @@ class TableRow extends DataTableSource {
   @override
   DataRow? getRow(int index) {
     return DataRow.byIndex(index: index, cells: [
-      DataCell(Text("")),
-      DataCell(Text(demoRecentFiles[index].poiId)),
-      DataCell(Text('${demoRecentFiles[index].name}')),
-      DataCell(Text('${demoRecentFiles[index].poiType}')),
-      DataCell(Text('${demoRecentFiles[index].union}')),
-      DataCell(Text('${demoRecentFiles[index].thana}')),
-      DataCell(Text('${demoRecentFiles[index].district}')),
-      DataCell(Text('${demoRecentFiles[index].division}')),
-      DataCell(Text('${demoRecentFiles[index].market}')),
-      DataCell(Text('${demoRecentFiles[index].territory}')),
-      DataCell(Text('${demoRecentFiles[index].area}')),
-      DataCell(Text('${demoRecentFiles[index].region}')),
-      DataCell(Text('${demoRecentFiles[index].zone}')),
-      DataCell(Text('${demoRecentFiles[index].latLong}')),
-      DataCell(
-        Row(
+      DataCell(Center(child: Text(demoRecentFiles[index].cid))),
+      DataCell(Center(child: Text(demoRecentFiles[index].poiId))),
+      DataCell(Center(child: Text('${demoRecentFiles[index].name}'))),
+      DataCell(Center(child: Text('${demoRecentFiles[index].poiType}'))),
+      DataCell(Center(child: Text('${demoRecentFiles[index].union}'))),
+      DataCell(Center(child: Text('${demoRecentFiles[index].thana}'))),
+      DataCell(Center(child: Text('${demoRecentFiles[index].district}'))),
+      DataCell(Center(child: Text('${demoRecentFiles[index].division}'))),
+      DataCell(Center(child: Text('${demoRecentFiles[index].market}'))),
+      DataCell(Center(child: Text('${demoRecentFiles[index].territory}'))),
+      DataCell(Center(child: Text('${demoRecentFiles[index].area}'))),
+      DataCell(Center(child: Text('${demoRecentFiles[index].region}'))),
+      DataCell(Center(child: Text('${demoRecentFiles[index].latLong}'))),
+      DataCell(Center(
+        child: Row(
           children: [
-            EditView(),
             IconButton(
-              onPressed: () {
-                print("Delete");
-              },
-              icon: Icon(
-                Icons.delete,
-                color: Colors.red,
-              ),
-            ),
+                onPressed: () {
+                  print("update");
+                },
+                icon: Icon(
+                  Icons.edit,
+                  color: primaryColor,
+                )),
+            IconButton(
+                onPressed: () {
+                  print("Delete");
+                },
+                icon: Icon(
+                  Icons.delete,
+                  color: Colors.red,
+                )),
           ],
         ),
-      ),
+      )),
     ]);
   }
 

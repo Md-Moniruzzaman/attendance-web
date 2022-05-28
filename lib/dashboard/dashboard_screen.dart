@@ -88,7 +88,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
 }
 
 class Header extends StatefulWidget {
-
   const Header({
     Key? key,
   }) : super(key: key);
@@ -100,36 +99,46 @@ class Header extends StatefulWidget {
 class _HeaderState extends State<Header> {
   @override
   Widget build(BuildContext context) {
-     List<String> items=['POI Id','POI type','User id'];
-      String? selectedItem = 'POI Id';
+    List<String> items = ['POI Id', 'POI type', 'User id'];
+    String? selectedItem = 'POI Id';
     return Row(
       children: [
-        if(!Responsive.isDesktop(context))
-        IconButton(onPressed: (){}, icon: Icon(Icons.menu)),
-        
-        if(Responsive.isDesktop(context))
-
-        Text(
-          "Dashboard",
-          style: Theme.of(context).textTheme.headline5,
+        if (!Responsive.isDesktop(context))
+          IconButton(
+            // onPressed: context.read<MenuController>().controlMenu,
+            onPressed: (){},
+            icon: Icon(Icons.menu),
+          ),
+        if (Responsive.isDesktop(context))
+          Text(
+            "Dashboard",
+            style: Theme.of(context).textTheme.headline5,
+          ),
+        if (!Responsive.isMobile(context))
+          Spacer(flex: Responsive.isDesktop(context) ? 2 : 1),
+        if (Responsive.isDesktop(context))
+          DropdownButton<String>(
+            value: selectedItem,
+            items: items
+                .map(
+                  (item) => DropdownMenuItem<String>(
+                    value: item,
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        item,
+                        style: Theme.of(context).textTheme.subtitle2,
+                      ),
+                    ),
+                  ),
+                )
+                .toList(),
+            onChanged: (item) => setState(() => selectedItem = item),
+          ),
+        SizedBox(
+          width: 14,
         ),
-        if(!Responsive.isMobile(context))
-
-            Spacer(flex: Responsive.isDesktop(context)? 2:2),
-
-        if(Responsive.isDesktop(context))
-
-            DropdownButton<String>(
-              value: selectedItem,items: items
-            .map((item) => DropdownMenuItem<String>(
-              value:item,
-              child: Text(item),
-              ),
-              ).toList(),
-              onChanged: (item)=>setState(()=> selectedItem = item ),
-              ),
         Expanded(
-
           child: SearchField(),
         )
       ],

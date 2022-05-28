@@ -123,21 +123,42 @@ class _MyAppState extends State<EditView> {
                                       ),
                                     ],
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(16.0),
-                                    child: RaisedButton(
-                                      color: primaryColor,
-                                      child: Text(
-                                        "Submit",
-                                        style: TextStyle(color: Colors.white),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(16.0),
+                                        child: RaisedButton(
+                                          color: primaryColor,
+                                          child: Text(
+                                            "Submit",
+                                            style: TextStyle(color: Colors.white),
+                                          ),
+                                          onPressed: () {
+                                            if (_formKey.currentState!.validate()) {
+                                              _formKey.currentState!.save();
+                                            }
+                                          },
+                                        ),
                                       ),
-                                      onPressed: () {
-                                        if (_formKey.currentState!.validate()) {
-                                          _formKey.currentState!.save();
-                                        }
-                                      },
-                                    ),
-                                  )
+                                      // Spacer(flex: 2,),
+                                      SizedBox(width: 14,),
+                                       Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: RaisedButton(
+                                        color: Colors.red,
+                                        child: Text(
+                                          "Cancel",
+                                          style: TextStyle(color: Colors.white),
+                                        ),
+                                        onPressed: () {
+                                         Navigator.pop(context);
+                                        },
+                                      ),
+                                  ),
+                                    ],
+                                  ),
+                                 
                                 ],
                               ),
                             ),

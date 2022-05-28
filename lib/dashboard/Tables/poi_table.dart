@@ -1,4 +1,3 @@
-import 'package:attendance_app/add_row.dart';
 import 'package:attendance_app/constants.dart';
 import 'package:attendance_app/dummy.dart';
 import 'package:attendance_app/edit_row.dart';
@@ -129,20 +128,20 @@ class TableRow extends DataTableSource {
   @override
   DataRow? getRow(int index) {
     return DataRow.byIndex(index: index, cells: [
-      DataCell(Text("")),
-      DataCell(Text(demoRecentFiles[index].poiId)),
-      DataCell(Text('${demoRecentFiles[index].name}')),
-      DataCell(Text('${demoRecentFiles[index].poiType}')),
-      DataCell(Text('${demoRecentFiles[index].union}')),
-      DataCell(Text('${demoRecentFiles[index].thana}')),
-      DataCell(Text('${demoRecentFiles[index].district}')),
-      DataCell(Text('${demoRecentFiles[index].division}')),
-      DataCell(Text('${demoRecentFiles[index].market}')),
-      DataCell(Text('${demoRecentFiles[index].territory}')),
-      DataCell(Text('${demoRecentFiles[index].area}')),
-      DataCell(Text('${demoRecentFiles[index].region}')),
-      DataCell(Text('${demoRecentFiles[index].zone}')),
-      DataCell(Text('${demoRecentFiles[index].latLong}')),
+      DataCell(Center(child: Text((demoRecentFiles[index].cid)))),
+      DataCell(Center(child: Text(demoRecentFiles[index].poiId))),
+      DataCell(Center(child: Text('${demoRecentFiles[index].name}'))),
+      DataCell(Center(child: Text('${demoRecentFiles[index].poiType}'))),
+      DataCell(Center(child: Text('${demoRecentFiles[index].union}'))),
+      DataCell(Center(child: Text('${demoRecentFiles[index].thana}'))),
+      DataCell(Center(child: Text('${demoRecentFiles[index].district}'))),
+      DataCell(Center(child: Text('${demoRecentFiles[index].division}'))),
+      DataCell(Center(child: Text('${demoRecentFiles[index].market}'))),
+      DataCell(Center(child: Text('${demoRecentFiles[index].territory}'))),
+      DataCell(Center(child: Text('${demoRecentFiles[index].area}'))),
+      DataCell(Center(child: Text('${demoRecentFiles[index].region}'))),
+      DataCell(Center(child: Text('${demoRecentFiles[index].zone}'))),
+      DataCell(Center(child: Text('${demoRecentFiles[index].latLong}'))),
       DataCell(Row(
         children: [
           EditView(),
