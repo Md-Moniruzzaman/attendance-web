@@ -11,31 +11,48 @@ class DashboardPage extends StatefulWidget {
 }
 
 class _DashboardPageState extends State<DashboardPage> {
+  // final _scaffoldKey = GlobalKey<ScaffoldState>();
+
   String which_button = '';
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    which_button = 'POI Table';
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // key: _scaffoldKey,
       // appBar: Responsive.isMobile(context)?
       // AppBar()
       // appBar: AppBar(title: Text("Hello")),
-      // drawer: Drawer(
-      //   child: SideMenu(),
-      // ),
+      drawer: Drawer(
+        child: SideMenu(
+          setString: (String value) {
+            setState(() {
+              which_button = value;
+            });
+          },
+        ),
+      ),
       body: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          if(Responsive.isDesktop(context))
-          Expanded(
-            child: Container(
-              child: SideMenu(
-                setString: (String value) {
-                  setState(() {
-                    which_button = value;
-                  });
-                },
+          if (Responsive.isDesktop(context))
+            Expanded(
+              child: Container(
+                child: SideMenu(
+                  setString: (String value) {
+                    setState(() {
+                      which_button = value;
+                    });
+                  },
+                ),
               ),
             ),
-          ),
           Expanded(flex: 5, child: DashboardScreen(which_button: which_button))
         ],
       ),

@@ -8,6 +8,8 @@ class PopupView extends StatefulWidget {
 
 class _MyAppState extends State<PopupView> {
   final _formKey = GlobalKey<FormState>();
+  ScrollController scrollController = ScrollController();
+  ScrollController controller = ScrollController();
 
   @override
   Widget build(BuildContext context) {
@@ -22,11 +24,15 @@ class _MyAppState extends State<PopupView> {
                   content: Container(
                     width: MediaQuery.of(context).size.width * 0.45,
                     child: SingleChildScrollView(
+                      scrollDirection: Axis.vertical,
+                      controller: scrollController,
                       child: Column(
                         children: <Widget>[
                           Form(
                             key: _formKey,
                             child: SingleChildScrollView(
+                              scrollDirection: Axis.vertical,
+                              controller: controller,
                               child: Column(
                                 mainAxisSize: MainAxisSize.min,
                                 children: <Widget>[
@@ -123,21 +129,45 @@ class _MyAppState extends State<PopupView> {
                                       ),
                                     ],
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(16.0),
-                                    child: RaisedButton(
-                                      color: primaryColor,
-                                      child: Text(
-                                        "Submit",
-                                        style: TextStyle(color: Colors.white),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(16.0),
+                                        child: RaisedButton(
+                                          color: primaryColor,
+                                          child: Text(
+                                            "Submit",
+                                            style:
+                                                TextStyle(color: Colors.white),
+                                          ),
+                                          onPressed: () {
+                                            if (_formKey.currentState!
+                                                .validate()) {
+                                              _formKey.currentState!.save();
+                                            }
+                                          },
+                                        ),
                                       ),
-                                      onPressed: () {
-                                        if (_formKey.currentState!.validate()) {
-                                          _formKey.currentState!.save();
-                                        }
-                                      },
-                                    ),
-                                  )
+                                      SizedBox(
+                                        width: 14,
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: RaisedButton(
+                                          color: Colors.red,
+                                          child: Text(
+                                            "Cancel",
+                                            style:
+                                                TextStyle(color: Colors.white),
+                                          ),
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ],
                               ),
                             ),

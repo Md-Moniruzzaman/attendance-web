@@ -1,5 +1,6 @@
 import 'package:attendance_app/constants.dart';
 import 'package:attendance_app/dummy.dart';
+import 'package:attendance_app/edit_row.dart';
 import 'package:flutter/material.dart';
 
 class FieldForceData extends StatefulWidget {
@@ -9,12 +10,14 @@ class FieldForceData extends StatefulWidget {
 
 class _FieldForceDataState extends State<FieldForceData> {
   var tableRow = new TableRow();
-
+  ScrollController scrollController = ScrollController();
   @override
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
       child: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        controller: scrollController,
         child: Theme(
           data: Theme.of(context).copyWith(
             cardColor: secondaryColor,
@@ -48,7 +51,7 @@ class _FieldForceDataState extends State<FieldForceData> {
       )),
       DataColumn(
           label: Text(
-        "POI ID",
+        "Employee ID",
         style: Theme.of(context).textTheme.subtitle2,
       )),
       DataColumn(
@@ -58,87 +61,27 @@ class _FieldForceDataState extends State<FieldForceData> {
       )),
       DataColumn(
           label: Text(
-        "POI Type",
+        "Designation",
         style: Theme.of(context).textTheme.subtitle2,
       )),
       DataColumn(
           label: Text(
-        "Union",
+        "Mobile Number",
         style: Theme.of(context).textTheme.subtitle2,
       )),
       DataColumn(
           label: Text(
-        "Thana",
+        "E-mail",
         style: Theme.of(context).textTheme.subtitle2,
       )),
       DataColumn(
           label: Text(
-        "District",
+        "Restrict POI user",
         style: Theme.of(context).textTheme.subtitle2,
       )),
       DataColumn(
           label: Text(
-        "Division",
-        style: Theme.of(context).textTheme.subtitle2,
-      )),
-      DataColumn(
-          label: Text(
-        "Market",
-        style: Theme.of(context).textTheme.subtitle2,
-      )),
-      DataColumn(
-          label: Text(
-        "Territory",
-        style: Theme.of(context).textTheme.subtitle2,
-      )),
-      DataColumn(
-          label: Text(
-        "Area",
-        style: Theme.of(context).textTheme.subtitle2,
-      )),
-      DataColumn(
-          label: Text(
-        "Region",
-        style: Theme.of(context).textTheme.subtitle2,
-      )),
-      DataColumn(
-          label: Text(
-        "Zone",
-        style: Theme.of(context).textTheme.subtitle2,
-      )),
-      DataColumn(
-          label: Text(
-        "Lat & Long",
-        style: Theme.of(context).textTheme.subtitle2,
-      )),
-      DataColumn(
-          label: Text(
-        "Lat & Long",
-        style: Theme.of(context).textTheme.subtitle2,
-      )),
-      DataColumn(
-          label: Text(
-        "Lat & Long",
-        style: Theme.of(context).textTheme.subtitle2,
-      )),
-      DataColumn(
-          label: Text(
-        "Lat & Long",
-        style: Theme.of(context).textTheme.subtitle2,
-      )),
-      DataColumn(
-          label: Text(
-        "Lat & Long",
-        style: Theme.of(context).textTheme.subtitle2,
-      )),
-      DataColumn(
-          label: Text(
-        "Lat & Long",
-        style: Theme.of(context).textTheme.subtitle2,
-      )),
-      DataColumn(
-          label: Text(
-        "Lat & Long",
+        "Action",
         style: Theme.of(context).textTheme.subtitle2,
       )),
     ];
@@ -149,26 +92,30 @@ class TableRow extends DataTableSource {
   @override
   DataRow? getRow(int index) {
     return DataRow.byIndex(index: index, cells: [
-      DataCell(Text("")),
-      DataCell(Text(demoRecentFiles[index].poiId)),
-      DataCell(Text('${demoRecentFiles[index].name}')),
-      DataCell(Text('${demoRecentFiles[index].poiType}')),
-      DataCell(Text('${demoRecentFiles[index].union}')),
-      DataCell(Text('${demoRecentFiles[index].thana}')),
-      DataCell(Text('${demoRecentFiles[index].district}')),
-      DataCell(Text('${demoRecentFiles[index].division}')),
-      DataCell(Text('${demoRecentFiles[index].market}')),
-      DataCell(Text('${demoRecentFiles[index].territory}')),
-      DataCell(Text('${demoRecentFiles[index].area}')),
-      DataCell(Text('${demoRecentFiles[index].region}')),
-      DataCell(Text('${demoRecentFiles[index].zone}')),
-      DataCell(Text('${demoRecentFiles[index].latLong}')),
-      DataCell(Text('${demoRecentFiles[index].latLong}')),
-      DataCell(Text('${demoRecentFiles[index].latLong}')),
-      DataCell(Text('${demoRecentFiles[index].latLong}')),
-      DataCell(Text('${demoRecentFiles[index].latLong}')),
-      DataCell(Text('${demoRecentFiles[index].latLong}')),
-      DataCell(Text('${demoRecentFiles[index].latLong}')),
+      DataCell(Center(child: Text(demoRecentFiles[index].cid))),
+      DataCell(Center(child: Text(demoRecentFiles[index].poiId))),
+      DataCell(Center(child: Text('${demoRecentFiles[index].name}'))),
+      DataCell(Center(child: Text('${demoRecentFiles[index].poiType}'))),
+      DataCell(Center(child: Text('${demoRecentFiles[index].union}'))),
+      DataCell(Center(child: Text('${demoRecentFiles[index].thana}'))),
+      DataCell(Center(child: Text('${demoRecentFiles[index].district}'))),
+      DataCell(Center(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            EditView(),
+            IconButton(
+                onPressed: () {
+                  print("Delete");
+                },
+                icon: Icon(
+                  Icons.delete,
+                  color: Colors.red,
+                )),
+          ],
+        ),
+      )),
     ]);
   }
 

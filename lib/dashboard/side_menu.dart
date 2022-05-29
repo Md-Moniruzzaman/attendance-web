@@ -6,8 +6,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SideMenu extends StatefulWidget {
-  Function setString;
-  SideMenu({Key? key, required this.setString}) : super(key: key);
+  Function? setString;
+  SideMenu({Key? key, this.setString}) : super(key: key);
 
   @override
   State<SideMenu> createState() => _SideMenuState();
@@ -18,20 +18,17 @@ class _SideMenuState extends State<SideMenu> {
   Widget build(BuildContext context) {
     return Drawer(
       backgroundColor: bgColor,
-      // backgroundColor: Color(0xffC7CBBA).withOpacity(0.5),
       child: ListView(
         children: [
           DrawerHeader(
             decoration: BoxDecoration(
               color: secondaryColor,
-              // color: Color(0xffC7CBBA).withOpacity(0.5),
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 CircleAvatar(
-                  backgroundImage: NetworkImage(
-                    'images/bg.jpg'),  
+                  backgroundImage: NetworkImage('images/bg.jpg'),
                   maxRadius: 45,
                 ),
                 Text(
@@ -42,17 +39,17 @@ class _SideMenuState extends State<SideMenu> {
             ),
           ),
           DrawListTile(
-            setString: widget.setString,
+            setString: widget.setString!,
             title: "POI Table",
             icon: FontAwesomeIcons.addressBook,
           ),
           DrawListTile(
-            setString: widget.setString,
+            setString: widget.setString!,
             title: "Field Force",
             icon: FontAwesomeIcons.userGroup,
           ),
           DrawListTile(
-            setString: widget.setString,
+            setString: widget.setString!,
             title: "Attendance table",
             icon: FontAwesomeIcons.house,
           ),
