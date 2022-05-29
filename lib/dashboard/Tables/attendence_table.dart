@@ -1,5 +1,6 @@
 import 'package:attendance_app/constants.dart';
 import 'package:attendance_app/dummy.dart';
+import 'package:attendance_app/edit_row.dart';
 // import 'package:flutter/cupertino.dart';
 // import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -137,22 +138,16 @@ class TableRow extends DataTableSource {
       DataCell(Center(
         child: Row(
           children: [
+            EditView(),
             IconButton(
-                onPressed: () {
-                  print("update");
-                },
-                icon: Icon(
-                  Icons.edit,
-                  color: primaryColor,
-                )),
-            IconButton(
-                onPressed: () {
-                  print("Delete");
-                },
-                icon: Icon(
-                  Icons.delete,
-                  color: Colors.red,
-                )),
+              onPressed: () {
+                print("Delete");
+              },
+              icon: Icon(
+                Icons.delete,
+                color: Colors.red,
+              ),
+            ),
           ],
         ),
       )),

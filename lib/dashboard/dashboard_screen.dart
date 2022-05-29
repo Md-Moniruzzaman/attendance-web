@@ -17,7 +17,6 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreenState extends State<DashboardScreen> {
- 
   @override
   Widget build(BuildContext context) {
     print(widget.which_button);
@@ -35,7 +34,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             Row(
               children: [
                 Text(
-                 widget.which_button.toString(),
+                  widget.which_button.toString(),
                   style: Theme.of(context).textTheme.headline6,
                 ),
                 SizedBox(
@@ -98,7 +97,7 @@ class Header extends StatefulWidget {
 }
 
 class _HeaderState extends State<Header> {
-  // final _scaffoldKey = GlobalKey<ScaffoldState>();
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     List<String> items = ['POI Id', 'POI type', 'User id'];
@@ -108,10 +107,9 @@ class _HeaderState extends State<Header> {
         if (!Responsive.isDesktop(context))
           IconButton(
             // onPressed: context.read<MenuController>().controlMenu,
-            onPressed: (){
-                Scaffold.of(context).openDrawer() ;
-                // _scaffoldKey.currentState!.openDrawer();
-
+            onPressed: () {
+              Scaffold.of(context).openDrawer();
+              // _scaffoldKey.currentState?.openEndDrawer();
             },
             icon: Icon(Icons.menu),
           ),
@@ -122,25 +120,25 @@ class _HeaderState extends State<Header> {
           ),
         if (!Responsive.isMobile(context))
           Spacer(flex: Responsive.isDesktop(context) ? 2 : 1),
-        if (Responsive.isDesktop(context))
-          DropdownButton<String>(
-            value: selectedItem,
-            items: items
-                .map(
-                  (item) => DropdownMenuItem<String>(
-                    value: item,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        item,
-                        style: Theme.of(context).textTheme.subtitle2,
-                      ),
-                    ),
-                  ),
-                )
-                .toList(),
-            onChanged: (item) => setState(() => selectedItem = item),
-          ),
+        // if (Responsive.isDesktop(context))
+        //   DropdownButton<String>(
+        //     value: selectedItem,
+        //     items: items
+        //         .map(
+        //           (item) => DropdownMenuItem<String>(
+        //             value: item,
+        //             child: Padding(
+        //               padding: const EdgeInsets.all(8.0),
+        //               child: Text(
+        //                 item,
+        //                 style: Theme.of(context).textTheme.subtitle2,
+        //               ),
+        //             ),
+        //           ),
+        //         )
+        //         .toList(),
+        //     onChanged: (item) => setState(() => selectedItem = item),
+        //   ),
         SizedBox(
           width: 14,
         ),

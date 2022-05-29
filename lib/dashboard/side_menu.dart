@@ -18,20 +18,17 @@ class _SideMenuState extends State<SideMenu> {
   Widget build(BuildContext context) {
     return Drawer(
       backgroundColor: bgColor,
-      // backgroundColor: Color(0xffC7CBBA).withOpacity(0.5),
       child: ListView(
         children: [
           DrawerHeader(
             decoration: BoxDecoration(
               color: secondaryColor,
-              // color: Color(0xffC7CBBA).withOpacity(0.5),
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 CircleAvatar(
-                  backgroundImage: NetworkImage(
-                    'images/bg.jpg'),  
+                  backgroundImage: NetworkImage('images/bg.jpg'),
                   maxRadius: 45,
                 ),
                 Text(

@@ -1,5 +1,6 @@
 import 'package:attendance_app/constants.dart';
 import 'package:attendance_app/dummy.dart';
+import 'package:attendance_app/edit_row.dart';
 import 'package:flutter/material.dart';
 
 class FieldForceData extends StatefulWidget {
@@ -99,14 +100,7 @@ class TableRow extends DataTableSource {
       DataCell(Center(
         child: Row(
           children: [
-            IconButton(
-                onPressed: () {
-                  print("update");
-                },
-                icon: Icon(
-                  Icons.edit,
-                  color: primaryColor,
-                )),
+            EditView(),
             IconButton(
                 onPressed: () {
                   print("Delete");
