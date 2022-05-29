@@ -22,7 +22,13 @@ class _DashboardPageState extends State<DashboardPage> {
       // AppBar()
       // appBar: AppBar(title: Text("Hello")),
       drawer: Drawer(
-        child: SideMenu(),
+        child: SideMenu(
+          setString: (String value) {
+            setState(() {
+              which_button = value;
+            });
+          },
+        ),
       ),
       body: Row(
         crossAxisAlignment: CrossAxisAlignment.start,

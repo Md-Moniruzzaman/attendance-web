@@ -137,6 +137,8 @@ class TableRow extends DataTableSource {
       DataCell(Center(child: Text('${demoRecentFiles[index].latLong}'))),
       DataCell(Center(
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             EditView(),
             IconButton(
