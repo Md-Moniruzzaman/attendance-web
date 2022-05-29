@@ -1,7 +1,5 @@
 import 'package:attendance_app/constants.dart';
 import 'package:attendance_app/dummy.dart';
-// import 'package:flutter/cupertino.dart';
-// import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import '../../edit_row.dart';
