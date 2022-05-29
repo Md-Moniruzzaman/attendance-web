@@ -3,6 +3,7 @@ import 'package:attendance_app/batch_upload.dart';
 import 'package:attendance_app/dashboard/Tables/attendence_table.dart';
 import 'package:attendance_app/dashboard/Tables/field_force.dart';
 import 'package:attendance_app/dashboard/Tables/poi_table.dart';
+import 'package:attendance_app/dashboard/side_menu.dart';
 import 'package:attendance_app/responsive.dart';
 import 'package:flutter/material.dart';
 import 'package:../attendance_app/constants.dart';
@@ -97,6 +98,7 @@ class Header extends StatefulWidget {
 }
 
 class _HeaderState extends State<Header> {
+  // final _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     List<String> items = ['POI Id', 'POI type', 'User id'];
@@ -106,7 +108,11 @@ class _HeaderState extends State<Header> {
         if (!Responsive.isDesktop(context))
           IconButton(
             // onPressed: context.read<MenuController>().controlMenu,
-            onPressed: (){},
+            onPressed: (){
+                Scaffold.of(context).openDrawer() ;
+                // _scaffoldKey.currentState!.openDrawer();
+
+            },
             icon: Icon(Icons.menu),
           ),
         if (Responsive.isDesktop(context))
