@@ -1,6 +1,6 @@
 import 'package:attendance_app/dashboard/dashboard_screen.dart';
 import 'package:attendance_app/dashboard/side_menu.dart';
-import 'package:attendance_app/responsive.dart';
+import 'package:attendance_app/widgets/responsive_login.dart';
 import 'package:flutter/material.dart';
 
 class DashboardPage extends StatefulWidget {
@@ -41,7 +41,7 @@ class _DashboardPageState extends State<DashboardPage> {
       body: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          if (Responsive.isDesktop(context))
+          if (ResponsiveWidget.isLargeScreen(context))
             Expanded(
               child: Container(
                 child: SideMenu(

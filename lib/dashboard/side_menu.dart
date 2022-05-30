@@ -59,7 +59,7 @@ class _SideMenuState extends State<SideMenu> {
   }
 }
 
-class DrawListTile extends StatelessWidget {
+class DrawListTile extends StatefulWidget {
   final String title;
   final IconData? icon;
   Function setString;
@@ -70,24 +70,30 @@ class DrawListTile extends StatelessWidget {
     this.icon,
     required this.setString,
   }) : super(key: key);
+
+  @override
+  State<DrawListTile> createState() => _DrawListTileState();
+}
+
+class _DrawListTileState extends State<DrawListTile> {
   @override
   Widget build(BuildContext context) {
     return Container(
       child: ListTile(
         title: Text(
-          title,
+          widget.title,
           style: TextStyle(
             color: Colors.white54,
           ),
         ),
         onTap: () {
-          title == "POI Table"
-              ? setString("POI Table")
-              : title == "Field Force"
-                  ? setString("Field Force")
-                  : setString("Attendance table");
+          widget.title == "POI Table"
+              ? widget.setString("POI Table")
+              : widget.title == "Field Force"
+                  ? widget.setString("Field Force")
+                  : widget.setString("Attendance table");
         },
-        leading: Icon(icon, size: 18, color: Colors.white54),
+        leading: Icon(widget.icon, size: 18, color: Colors.white54),
         horizontalTitleGap: 0.0,
       ),
     );

@@ -4,7 +4,7 @@ import 'package:attendance_app/dashboard/Tables/attendence_table.dart';
 import 'package:attendance_app/dashboard/Tables/field_force.dart';
 import 'package:attendance_app/dashboard/Tables/poi_table.dart';
 import 'package:attendance_app/dashboard/side_menu.dart';
-import 'package:attendance_app/responsive.dart';
+import 'package:attendance_app/widgets/responsive_login.dart';
 import 'package:flutter/material.dart';
 import 'package:../attendance_app/constants.dart';
 
@@ -29,14 +29,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
             SizedBox(
               height: defultPadding,
             ),
-            // which_button == 'Field Force'
-            //     ?
             Row(
               children: [
                 Text(
                   widget.which_button.toString(),
                   style: Theme.of(context).textTheme.headline6,
                 ),
+
                 SizedBox(
                   width: 14,
                 ),
@@ -49,21 +48,45 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 //     label: Text("Add Row")),
                 Spacer(),
                 ElevatedButton.icon(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => CsvToList()),
-                      );
-                    },
-                    icon: Icon(Icons.add),
-                    label: Text("Batch Upload")),
+                  style: ElevatedButton.styleFrom(
+                    minimumSize: const Size(100, 40),
+                    // maximumSize: const Size(150, 50),
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CsvToList(),
+                      ),
+                    );
+                  },
+                  icon: Icon(Icons.add),
+                  label: Text("Batch Upload"),
+                ),
+
                 SizedBox(
                   width: 8,
                 ),
-                ElevatedButton.icon(
-                    onPressed: () {},
-                    icon: Icon(Icons.download),
-                    label: Text("Download"))
+                ResponsiveWidget.isSmallScreen(context)
+                    ? ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          minimumSize: const Size(100, 40),
+
+                          // maximumSize: const Size(150, 50),
+                        ),
+                        onPressed: () {},
+                        child: Icon(Icons.download),
+                      )
+                    : ElevatedButton.icon(
+                        style: ElevatedButton.styleFrom(
+                          minimumSize: const Size(100, 40),
+
+                          // maximumSize: const Size(150, 50),
+                        ),
+                        onPressed: () {},
+                        icon: Icon(Icons.download),
+                        label: Text("Download"),
+                      )
               ],
             ),
             // : Text("Not Attendance"),
@@ -104,7 +127,7 @@ class _HeaderState extends State<Header> {
     String? selectedItem = 'POI Id';
     return Row(
       children: [
-        if (!Responsive.isDesktop(context))
+        if (!ResponsiveWidget.isLargeScreen(context))
           IconButton(
             // onPressed: context.read<MenuController>().controlMenu,
             onPressed: () {
@@ -113,13 +136,13 @@ class _HeaderState extends State<Header> {
             },
             icon: Icon(Icons.menu),
           ),
-        if (Responsive.isDesktop(context))
+        if (ResponsiveWidget.isLargeScreen(context))
           Text(
             "Dashboard",
             style: Theme.of(context).textTheme.headline5,
           ),
-        if (!Responsive.isMobile(context))
-          Spacer(flex: Responsive.isDesktop(context) ? 2 : 1),
+        if (!ResponsiveWidget.isSmallScreen(context))
+          Spacer(flex: ResponsiveWidget.isLargeScreen(context) ? 2 : 1),
         // if (Responsive.isDesktop(context))
         //   DropdownButton<String>(
         //     value: selectedItem,
@@ -150,7 +173,12 @@ class _HeaderState extends State<Header> {
   }
 }
 
-class SearchField extends StatelessWidget {
+class SearchField extends StatefulWidget {
+  @override
+  State<SearchField> createState() => _SearchFieldState();
+}
+
+class _SearchFieldState extends State<SearchField> {
   @override
   Widget build(BuildContext context) {
     return TextField(
