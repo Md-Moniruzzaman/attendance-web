@@ -26,6 +26,9 @@ class _LoginPageState extends State<LoginPage> {
                 decoration: BoxDecoration(
                   color: secondaryColor,
                   borderRadius: BorderRadius.circular(16.0),
+                  boxShadow: [
+                    BoxShadow(blurRadius: 25.0),
+                  ],
                 ),
                 height: MediaQuery.of(context).size.height / 1.4,
                 width: MediaQuery.of(context).size.width / 1.5,
@@ -60,6 +63,9 @@ class _LoginPageState extends State<LoginPage> {
                 decoration: BoxDecoration(
                   color: secondaryColor,
                   borderRadius: BorderRadius.circular(16.0),
+                  boxShadow: [
+                    BoxShadow(blurRadius: 25.0),
+                  ],
                 ),
                 height: MediaQuery.of(context).size.height / 1.4,
                 width: MediaQuery.of(context).size.width / 2.8,

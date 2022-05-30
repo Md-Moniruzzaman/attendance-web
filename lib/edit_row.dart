@@ -130,9 +130,9 @@ class _MyAppState extends State<EditView> {
                                       Padding(
                                         padding: const EdgeInsets.all(16.0),
                                         child: RaisedButton(
-                                          color: primaryColor,
+                                          color: Colors.red,
                                           child: Text(
-                                            "Submit",
+                                            "Cancel",
                                             style:
                                                 TextStyle(color: Colors.white),
                                           ),
@@ -151,9 +151,9 @@ class _MyAppState extends State<EditView> {
                                       Padding(
                                         padding: const EdgeInsets.all(8.0),
                                         child: RaisedButton(
-                                          color: Colors.red,
+                                          color: primaryColor,
                                           child: Text(
-                                            "Cancel",
+                                            "Submit",
                                             style:
                                                 TextStyle(color: Colors.white),
                                           ),

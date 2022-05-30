@@ -1,4 +1,5 @@
 import 'package:attendance_app/constants.dart';
+import 'package:attendance_app/delete_row.dart';
 import 'package:attendance_app/dummy.dart';
 import 'package:attendance_app/edit_row.dart';
 import 'package:flutter/material.dart';
@@ -59,70 +60,83 @@ class _PoiTableDataState extends State<PoiTableData> {
         style: Theme.of(context).textTheme.subtitle2,
       )),
       DataColumn(
-          label: Text(
-        "Name",
-        style: Theme.of(context).textTheme.subtitle2,
-      )),
+        label: Text(
+          "Name",
+          style: Theme.of(context).textTheme.subtitle2,
+        ),
+      ),
       DataColumn(
-          label: Text(
-        "POI Type",
-        style: Theme.of(context).textTheme.subtitle2,
-      )),
+        label: Text(
+          "POI Type",
+          style: Theme.of(context).textTheme.subtitle2,
+        ),
+      ),
       DataColumn(
-          label: Text(
-        "Union",
-        style: Theme.of(context).textTheme.subtitle2,
-      )),
+        label: Text(
+          "Union",
+          style: Theme.of(context).textTheme.subtitle2,
+        ),
+      ),
       DataColumn(
-          label: Text(
-        "Thana",
-        style: Theme.of(context).textTheme.subtitle2,
-      )),
+        label: Text(
+          "Thana",
+          style: Theme.of(context).textTheme.subtitle2,
+        ),
+      ),
       DataColumn(
-          label: Text(
-        "District",
-        style: Theme.of(context).textTheme.subtitle2,
-      )),
+        label: Text(
+          "District",
+          style: Theme.of(context).textTheme.subtitle2,
+        ),
+      ),
       DataColumn(
-          label: Text(
-        "Division",
-        style: Theme.of(context).textTheme.subtitle2,
-      )),
+        label: Text(
+          "Division",
+          style: Theme.of(context).textTheme.subtitle2,
+        ),
+      ),
       DataColumn(
-          label: Text(
-        "Market",
-        style: Theme.of(context).textTheme.subtitle2,
-      )),
+        label: Text(
+          "Market",
+          style: Theme.of(context).textTheme.subtitle2,
+        ),
+      ),
       DataColumn(
-          label: Text(
-        "Territory",
-        style: Theme.of(context).textTheme.subtitle2,
-      )),
+        label: Text(
+          "Territory",
+          style: Theme.of(context).textTheme.subtitle2,
+        ),
+      ),
       DataColumn(
-          label: Text(
-        "Area",
-        style: Theme.of(context).textTheme.subtitle2,
-      )),
+        label: Text(
+          "Area",
+          style: Theme.of(context).textTheme.subtitle2,
+        ),
+      ),
       DataColumn(
-          label: Text(
-        "Region",
-        style: Theme.of(context).textTheme.subtitle2,
-      )),
+        label: Text(
+          "Region",
+          style: Theme.of(context).textTheme.subtitle2,
+        ),
+      ),
       DataColumn(
-          label: Text(
-        "Zone",
-        style: Theme.of(context).textTheme.subtitle2,
-      )),
+        label: Text(
+          "Zone",
+          style: Theme.of(context).textTheme.subtitle2,
+        ),
+      ),
       DataColumn(
-          label: Text(
-        "Lat & Long",
-        style: Theme.of(context).textTheme.subtitle2,
-      )),
+        label: Text(
+          "Lat & Long",
+          style: Theme.of(context).textTheme.subtitle2,
+        ),
+      ),
       DataColumn(
-          label: Text(
-        "Action",
-        style: Theme.of(context).textTheme.subtitle2,
-      )),
+        label: Text(
+          "Action",
+          style: Theme.of(context).textTheme.subtitle2,
+        ),
+      ),
     ];
   }
 }
@@ -150,15 +164,16 @@ class TableRow extends DataTableSource {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           EditView(),
-          IconButton(
-            onPressed: () {
-              print("Delete");
-            },
-            icon: Icon(
-              Icons.delete,
-              color: Colors.red,
-            ),
-          ),
+          DeleteView()
+          // IconButton(
+          //   onPressed: () {
+          //     print("Delete");
+          //   },
+          //   icon: Icon(
+          //     Icons.delete,
+          //     color: Colors.red,
+          //   ),
+          // ),
         ],
       )),
     ]);

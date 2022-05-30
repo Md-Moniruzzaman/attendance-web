@@ -3,7 +3,6 @@ import 'package:attendance_app/batch_upload.dart';
 import 'package:attendance_app/dashboard/Tables/attendence_table.dart';
 import 'package:attendance_app/dashboard/Tables/field_force.dart';
 import 'package:attendance_app/dashboard/Tables/poi_table.dart';
-import 'package:attendance_app/dashboard/side_menu.dart';
 import 'package:attendance_app/widgets/responsive_login.dart';
 import 'package:flutter/material.dart';
 import 'package:../attendance_app/constants.dart';
@@ -71,8 +70,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     ? ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           minimumSize: const Size(100, 40),
-
-                          // maximumSize: const Size(150, 50),
                         ),
                         onPressed: () {},
                         child: Icon(Icons.download),
@@ -80,8 +77,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     : ElevatedButton.icon(
                         style: ElevatedButton.styleFrom(
                           minimumSize: const Size(100, 40),
-
-                          // maximumSize: const Size(150, 50),
                         ),
                         onPressed: () {},
                         icon: Icon(Icons.download),
@@ -89,7 +84,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       )
               ],
             ),
-            // : Text("Not Attendance"),
             SizedBox(
               height: defultPadding,
             ),
@@ -129,10 +123,8 @@ class _HeaderState extends State<Header> {
       children: [
         if (!ResponsiveWidget.isLargeScreen(context))
           IconButton(
-            // onPressed: context.read<MenuController>().controlMenu,
             onPressed: () {
               Scaffold.of(context).openDrawer();
-              // _scaffoldKey.currentState?.openEndDrawer();
             },
             icon: Icon(Icons.menu),
           ),
@@ -198,9 +190,3 @@ class _SearchFieldState extends State<SearchField> {
     );
   }
 }
-// child: Container(
-//               padding: EdgeInsets.all(16.0 * 0.75),
-//               decoration: BoxDecoration(
-//                   color: primaryColor,
-//                   borderRadius: BorderRadius.all(Radius.circular(10))),
-//               child: Icon(Icons.search),
